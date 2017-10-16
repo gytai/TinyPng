@@ -20,14 +20,14 @@ def compress_core(inputFile, outputFile, img_width):
 		source.to_file(outputFile)
 
 # 压缩一个文件夹下的图片
-def compress_path(path, width):
+def compress_path(path, width,cover):
 	print "compress_path-------------------------------------"
 	if not os.path.isdir(path):
 		print "这不是一个文件夹，请输入文件夹的正确路径!"
 		return
 	else:
 		fromFilePath = path 			# 源路径
-		if img_width is not -1:
+		if cover is not -1:
 			toFilePath = path
 		else:
 			toFilePath = path+"/tiny" 		# 输出路径
@@ -65,7 +65,7 @@ def compress_file(inputFile, width,cover):
 	basename = os.path.basename(inputFile)
 	fileName, fileSuffix = os.path.splitext(basename)
 	if fileSuffix == '.png' or fileSuffix == '.jpg' or fileSuffix == '.jpeg':
-		if img_width is not -1:
+		if cover is not -1:
 			compress_core(inputFile, dirname+"/"+basename, width)
 		else:
 			compress_core(inputFile, dirname+"/tiny_"+basename, width)		
