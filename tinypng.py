@@ -79,7 +79,7 @@ def compress_file(inputFile, width,cover):
 @click.option('-w', "--width", type=int,  default=-1,    help="图片宽度，默认不变")
 @click.option('-c', "--cover", type=int,  default=-1,    help="是否直接覆盖源文件")
 
-def run(file, dir, width):
+def run(file, dir, width,cover):
 	print ("GcsSloop TinyPng V%s" %(version))
 	if file is not None:
 		compress_file(file, width,cover)				# 仅压缩一个文件
