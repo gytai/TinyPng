@@ -3,6 +3,7 @@
 1，添加多文件处理进度显示
 
 2，添加源文件覆盖功能
+
 ===========================================================================================
 # <img src="http://ww1.sinaimg.cn/large/005Xtdi2jw1f4v3ht2r2ij3074074jrl.jpg" width=32 /> TinyPng
 [![License](https://img.shields.io/badge/license-Apache%202-green.svg)](https://www.apache.org/licenses/LICENSE-2.0)
