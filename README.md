@@ -4,6 +4,8 @@
 
 2，添加源文件覆盖功能
 
+3，添加循环文件夹便利功能
+
 
 # <img src="http://ww1.sinaimg.cn/large/005Xtdi2jw1f4v3ht2r2ij3074074jrl.jpg" width=32 /> TinyPng
 [![License](https://img.shields.io/badge/license-Apache%202-green.svg)](https://www.apache.org/licenses/LICENSE-2.0)

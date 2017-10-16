@@ -7,7 +7,8 @@ import os.path
 import click
 import tinify
 
-tinify.key = "在此处填写你申请的API"		# API KEY
+#tinify.key = "在此处填写你申请的API"		# API KEY
+tinify.key = "jWzQEFvpJX0b_g8j5rqj773M-UC59Ulb"		# API KEY
 version = "1.0.1"				# 版本
 
 # 压缩的核心
@@ -27,35 +28,39 @@ def compress_path(path, width,cover):
 		return
 	else:
 		fromFilePath = path 			# 源路径
-		if cover is not -1:
-			toFilePath = path
-		else:
-			toFilePath = path+"/tiny" 		# 输出路径
-		print "fromFilePath=%s" %fromFilePath
-		print "toFilePath=%s" %toFilePath
+        if cover is not -1:
+            toFilePath = fromFilePath
+        else:
+            toFilePath = fromFilePath + "/../tinypng_out"
+        print "fromFilePath=%s" % fromFilePath
+        print "toFilePath=%s" % toFilePath
+        compress_current_path(fromFilePath,toFilePath,width,cover)
 
-		for root, dirs, files in os.walk(fromFilePath):
-			print "root = %s" %root
-			print "dirs = %s" %dirs
-			print "files= %s" %files
-			print "files count=%d" %len(files)
-			count = 0
-			for name in files:
-				count += 1
-				print "current deal file index=%d" %count
-				fileName, fileSuffix = os.path.splitext(name)
-				if fileSuffix == '.png' or fileSuffix == '.jpg' or fileSuffix == '.jpeg':
-					toFullPath = toFilePath + root[len(fromFilePath):]
-					toFullName = toFullPath + '/' + name
-					if os.path.isdir(toFullPath):
-						pass
-					else:
-						os.mkdir(toFullPath)
-					compress_core(root + '/' + name, toFullName, width)
-			break									# 仅遍历当前目录
+def compress_current_path(fromFilePath,toFilePath,width,cover):
+    for root, dirs, files in os.walk(fromFilePath):
+        print "root = %s" % root
+        print "dirs = %s" % dirs
+        print "files= %s" % files
+        print fromFilePath+" files count=%d" % len(files)
+        count = 0
+        for name in files:
+            fileName, fileSuffix = os.path.splitext(name)
+            if fileSuffix == '.png' or fileSuffix == '.jpg' or fileSuffix == '.jpeg':
+                count += 1
+                print "current deal file name=%s" % fileName
+                toFullName = toFilePath + '/' + name
+                if os.path.isdir(toFilePath):
+                    pass
+                else:
+                    os.mkdir(toFilePath)
+                compress_core(root + '/' + name, toFullName, width)
+        for dir in dirs:
+            compress_current_path(fromFilePath + '/' + dir,toFilePath + '/' + dir,width,cover)
+        break
+
 
 # 仅压缩指定文件
-def compress_file(inputFile, width,cover):
+def compress_file(inputFile,width,cover):
 	print "compress_file-------------------------------------"
 	if not os.path.isfile(inputFile):
 		print "这不是一个文件，请输入文件的正确路径!"
@@ -68,8 +73,7 @@ def compress_file(inputFile, width,cover):
 		if cover is not -1:
 			compress_core(inputFile, dirname+"/"+basename, width)
 		else:
-			compress_core(inputFile, dirname+"/tiny_"+basename, width)		
-			
+			compress_core(inputFile, dirname+"/../tinypng_out/"+basename, width)
 	else:
 		print "不支持该文件类型!"
 
