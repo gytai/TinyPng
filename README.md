@@ -1,3 +1,6 @@
+首先感谢原作者的贡献。之前的版本处理多文件没有进度显示。不易于查看处理进度。遂加了一个进度的打印信息
+===========================================================================================
+
 # <img src="http://ww1.sinaimg.cn/large/005Xtdi2jw1f4v3ht2r2ij3074074jrl.jpg" width=32 /> TinyPng
 [![License](https://img.shields.io/badge/license-Apache%202-green.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 ![version](https://img.shields.io/badge/version-1.0.1-brightgreen.svg)
