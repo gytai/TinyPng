@@ -79,7 +79,7 @@ python tinypng.py
 `－f` | 图像文件 | 压缩指定的单个文件                 | `tinypng.py -f /User/GcsSloop/demo.jpg`
 `－d` | 文件夹   | 压缩指定文件夹下所有图片文件       | `tinypng.py -d /User/GcsSloop/DemoDir`
  `-w` | 整型数字 | 压缩后图片的宽度，不指定则宽度不变 | `tinypng.py -w 300`
- `-c` | 字符 | 覆盖=y,不覆盖=n,默认不覆盖 | `tinypng.py -c y`
+ `-c` | 无需参数 | 加上此命令则会直接覆盖源文件  | `tinypng.py -c`
 
 **参数优先级:**
 ```

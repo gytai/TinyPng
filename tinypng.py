@@ -27,7 +27,7 @@ def compress_path(path, width,cover):
 		return
 	else:
 		fromFilePath = path 			# 源路径
-        if cover is not 'n':
+        if cover:
             toFilePath = fromFilePath
         else:
             toFilePath = fromFilePath + "/../tinypng_out"
@@ -66,7 +66,7 @@ def compress_file(inputFile,width,cover):
 	basename = os.path.basename(inputFile)
 	fileName, fileSuffix = os.path.splitext(basename)
 	if fileSuffix == '.png' or fileSuffix == '.jpg' or fileSuffix == '.jpeg':
-		if cover is not 'n':
+		if cover:
 			compress_core(inputFile, dirname+"/"+basename, width)
 		else:
 			compress_core(inputFile, dirname+"/../tinypng_out/"+basename, width)
@@ -77,7 +77,7 @@ def compress_file(inputFile,width,cover):
 @click.option('-f', "--file",  type=str,  default=None,  help="单个文件压缩")
 @click.option('-d', "--dir",   type=str,  default=None,  help="被压缩的文件夹")
 @click.option('-w', "--width", type=int,  default=-1,    help="图片宽度，默认不变")
-@click.option('-c', "--cover", type=str,  default='n',    help="是否直接覆盖源文件")
+@click.option('-c', "--cover", is_flag=True,default=False,    help="是否直接覆盖源文件")
 
 def run(file, dir, width,cover):
 	print ("GcsSloop TinyPng V%s" %(version))
