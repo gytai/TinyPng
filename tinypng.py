@@ -35,7 +35,11 @@ def compress_path(path, width):
 			print "root = %s" %root
 			print "dirs = %s" %dirs
 			print "files= %s" %files
+			print "files count=%d" %len(files)
+			count = 0
 			for name in files:
+				count += 1
+				print "current deal file index=%d" %count
 				fileName, fileSuffix = os.path.splitext(name)
 				if fileSuffix == '.png' or fileSuffix == '.jpg' or fileSuffix == '.jpeg':
 					toFullPath = toFilePath + root[len(fromFilePath):]
