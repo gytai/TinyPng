@@ -4,7 +4,7 @@
 
 2，添加源文件覆盖功能
 
-3，添加循环文件夹便利功能
+3，添加循环文件夹遍历功能
 
 
 # <img src="http://ww1.sinaimg.cn/large/005Xtdi2jw1f4v3ht2r2ij3074074jrl.jpg" width=32 /> TinyPng
