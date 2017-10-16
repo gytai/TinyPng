@@ -27,7 +27,10 @@ def compress_path(path, width):
 		return
 	else:
 		fromFilePath = path 			# 源路径
-		toFilePath = path+"/tiny" 		# 输出路径
+		if img_width is not -1:
+			toFilePath = path
+		else:
+			toFilePath = path+"/tiny" 		# 输出路径
 		print "fromFilePath=%s" %fromFilePath
 		print "toFilePath=%s" %toFilePath
 
@@ -52,7 +55,7 @@ def compress_path(path, width):
 			break									# 仅遍历当前目录
 
 # 仅压缩指定文件
-def compress_file(inputFile, width):
+def compress_file(inputFile, width,cover):
 	print "compress_file-------------------------------------"
 	if not os.path.isfile(inputFile):
 		print "这不是一个文件，请输入文件的正确路径!"
@@ -62,7 +65,11 @@ def compress_file(inputFile, width):
 	basename = os.path.basename(inputFile)
 	fileName, fileSuffix = os.path.splitext(basename)
 	if fileSuffix == '.png' or fileSuffix == '.jpg' or fileSuffix == '.jpeg':
-		compress_core(inputFile, dirname+"/tiny_"+basename, width)
+		if img_width is not -1:
+			compress_core(inputFile, dirname+"/"+basename, width)
+		else:
+			compress_core(inputFile, dirname+"/tiny_"+basename, width)		
+			
 	else:
 		print "不支持该文件类型!"
 
@@ -70,16 +77,18 @@ def compress_file(inputFile, width):
 @click.option('-f', "--file",  type=str,  default=None,  help="单个文件压缩")
 @click.option('-d', "--dir",   type=str,  default=None,  help="被压缩的文件夹")
 @click.option('-w', "--width", type=int,  default=-1,    help="图片宽度，默认不变")
+@click.option('-c', "--cover", type=int,  default=-1,    help="是否直接覆盖源文件")
+
 def run(file, dir, width):
 	print ("GcsSloop TinyPng V%s" %(version))
 	if file is not None:
-		compress_file(file, width)				# 仅压缩一个文件
+		compress_file(file, width,cover)				# 仅压缩一个文件
 		pass
 	elif dir is not None:
-		compress_path(dir, width)				# 压缩指定目录下的文件
+		compress_path(dir, width,cover)				# 压缩指定目录下的文件
 		pass
 	else:
-		compress_path(os.getcwd(), width)		# 压缩当前目录下的文件
+		compress_path(os.getcwd(), width,cover)		# 压缩当前目录下的文件
 	print "结束!"
 
 if __name__ == "__main__":
