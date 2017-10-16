@@ -8,7 +8,6 @@ import click
 import tinify
 
 #tinify.key = "在此处填写你申请的API"		# API KEY
-tinify.key = "jWzQEFvpJX0b_g8j5rqj773M-UC59Ulb"		# API KEY
 version = "1.0.1"				# 版本
 
 # 压缩的核心
