@@ -38,16 +38,13 @@ def compress_path(path, width,cover):
 
 def compress_current_path(fromFilePath,toFilePath,width,cover):
     for root, dirs, files in os.walk(fromFilePath):
-        print "root = %s" % root
-        print "dirs = %s" % dirs
-        print "files= %s" % files
         print fromFilePath+" files count=%d" % len(files)
         count = 0
         for name in files:
             fileName, fileSuffix = os.path.splitext(name)
             if fileSuffix == '.png' or fileSuffix == '.jpg' or fileSuffix == '.jpeg':
                 count += 1
-                print "current deal file name=%s" % fileName
+                print "current deal file name=%s,file index=%d" % (fileName + fileSuffix,count)
                 toFullName = toFilePath + '/' + name
                 if os.path.isdir(toFilePath):
                     pass
