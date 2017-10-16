@@ -7,8 +7,8 @@ import os.path
 import click
 import tinify
 
-#tinify.key = "在此处填写你申请的API"		# API KEY
-version = "1.0.1"				# 版本
+tinify.key = "在此处填写你申请的API"		# API KEY
+version = "1.0.2"				# 版本
 
 # 压缩的核心
 def compress_core(inputFile, outputFile, img_width):
